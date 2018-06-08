@@ -227,7 +227,6 @@ CREATE TABLE Comments (
 );
 
 #load values for tables
-
 LOAD DATA INFILE '/Users/xinyuwang/Data/Restaurants.csv' INTO TABLE Restaurants
 	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
@@ -253,3 +252,7 @@ LOAD DATA INFILE '/Users/xinyuwang/Data/Gifts.csv' INTO TABLE Gifts
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
 
+LOAD DATA INFILE '/Users/xinyuwang/Data/ElementLists.csv' INTO TABLE ElementLists
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
