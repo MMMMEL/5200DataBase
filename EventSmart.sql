@@ -176,7 +176,7 @@ CREATE TABLE DIYEvents (
 
 CREATE TABLE Reservations (
 	ReservationID INT AUTO_INCREMENT,
-    CreatTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CreateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     EventDate TIMESTAMP,
 	UserName VARCHAR(255),
     PlannerName VARCHAR(255),
@@ -193,9 +193,9 @@ CREATE TABLE Reservations (
 
 CREATE TABLE Reviews (
 	ReviewID INT AUTO_INCREMENT,
-    CreatTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CreateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Rating FLOAT (2, 1),
-    Content TEXT,
+    Content LONGTEXT,
     UserName VARCHAR(255),
     ProductID INT,
     CONSTRAINT pk_Reviews_ReviewID PRIMARY KEY (ReviewID),
@@ -212,7 +212,7 @@ CREATE TABLE Reviews (
 CREATE TABLE Comments (
 	CommentID INT AUTO_INCREMENT,
     CreateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    Content TEXT NOT NULL,
+    Content LONGTEXT,
     UserName VARCHAR(255),
     EventID INT,
     CONSTRAINT pk_Comments_CommentID PRIMARY KEY (CommentID),
@@ -256,3 +256,58 @@ LOAD DATA INFILE '/Users/xinyuwang/Data/ElementLists.csv' INTO TABLE ElementList
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
+
+LOAD DATA INFILE '/Users/xinyuwang/Data/Persons.csv' INTO TABLE Persons
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+LOAD DATA INFILE '/Users/xinyuwang/Data/Administrators.csv' INTO TABLE Administrators
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+LOAD DATA INFILE '/Users/xinyuwang/Data/Users.csv' INTO TABLE Users
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+LOAD DATA INFILE '/Users/xinyuwang/Data/DIYers.csv' INTO TABLE DIYers
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+LOAD DATA INFILE '/Users/xinyuwang/Data/Planners.csv' INTO TABLE Planners
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+LOAD DATA INFILE '/Users/xinyuwang/Data/DIYEvents.csv' INTO TABLE DIYEvents
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+LOAD DATA INFILE '/Users/xinyuwang/Data/EventProducts.csv' INTO TABLE EventProducts
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+
+LOAD DATA INFILE '/Users/xinyuwang/Data/Reviews.csv' INTO TABLE Reviews
+	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES
+    (ReviewID, Rating, Content, UserName, ProductID);
+    
+LOAD DATA INFILE '/Users/xinyuwang/Data/Reservations.csv' INTO TABLE Reservations
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES
+    (ReservationID, EventDate, UserName, PlannerName);
+    
+LOAD DATA INFILE '/Users/xinyuwang/Data/Comments.csv' INTO TABLE Comments
+	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES
+    (CommentID, Content, UserName, EventID);
+
+
