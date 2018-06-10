@@ -227,66 +227,91 @@ CREATE TABLE Comments (
 );
 
 #load values for tables
-LOAD DATA INFILE '/Users/xinyuwang/Data/Restaurants.csv' INTO TABLE Restaurants
+LOAD DATA INFILE '/tmp/Data/Restaurants.csv' INTO TABLE Restaurants
 	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
 
-LOAD DATA INFILE '/Users/xinyuwang/Data/Wines.csv' INTO TABLE Wines
+LOAD DATA INFILE '/tmp/Data/Wines.csv' INTO TABLE Wines
 	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
     
-LOAD DATA INFILE '/Users/xinyuwang/Data/Movies.csv' INTO TABLE Movies
+LOAD DATA INFILE '/tmp/Data/Movies.csv' INTO TABLE Movies
 	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
 
-LOAD DATA INFILE '/Users/xinyuwang/Data/Musics.csv' INTO TABLE Musics
+LOAD DATA INFILE '/tmp/Data/Musics.csv' INTO TABLE Musics
 	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
 
-LOAD DATA INFILE '/Users/xinyuwang/Data/Gifts.csv' INTO TABLE Gifts
+LOAD DATA INFILE '/tmp/Data/Gifts.csv' INTO TABLE Gifts
 	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
 
-LOAD DATA INFILE '/Users/xinyuwang/Data/ElementLists.csv' INTO TABLE ElementLists
+LOAD DATA INFILE '/tmp/Data/ElementLists.csv' INTO TABLE ElementLists
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
 
+<<<<<<< HEAD
 LOAD DATA INFILE '/Users/xinyuwang/Data/Persons.csv' INTO TABLE Persons
+=======
+LOAD DATA INFILE '/tmp/Data/Persons.csv' INTO TABLE Persons
+>>>>>>> 66d8b1f85c3226ebabe563823eedf13aa7219d3e
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
     
+<<<<<<< HEAD
 LOAD DATA INFILE '/Users/xinyuwang/Data/Administrators.csv' INTO TABLE Administrators
+=======
+    LOAD DATA INFILE '/tmp/Data/Administrators.csv' INTO TABLE Administrators
+>>>>>>> 66d8b1f85c3226ebabe563823eedf13aa7219d3e
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
     
+<<<<<<< HEAD
 LOAD DATA INFILE '/Users/xinyuwang/Data/Users.csv' INTO TABLE Users
+=======
+    LOAD DATA INFILE '/tmp/Data/Users.csv' INTO TABLE Users
+>>>>>>> 66d8b1f85c3226ebabe563823eedf13aa7219d3e
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
     
+<<<<<<< HEAD
 LOAD DATA INFILE '/Users/xinyuwang/Data/DIYers.csv' INTO TABLE DIYers
+=======
+    LOAD DATA INFILE '/tmp/Data/DIYers.csv' INTO TABLE DIYers
+>>>>>>> 66d8b1f85c3226ebabe563823eedf13aa7219d3e
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
     
+<<<<<<< HEAD
 LOAD DATA INFILE '/Users/xinyuwang/Data/Planners.csv' INTO TABLE Planners
+=======
+    LOAD DATA INFILE '/tmp/Data/Planners.csv' INTO TABLE Planners
+>>>>>>> 66d8b1f85c3226ebabe563823eedf13aa7219d3e
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
     
+<<<<<<< HEAD
 LOAD DATA INFILE '/Users/xinyuwang/Data/DIYEvents.csv' INTO TABLE DIYEvents
+=======
+    LOAD DATA INFILE '/tmp/Data/DIYEvents.csv' INTO TABLE DIYEvents
+>>>>>>> 66d8b1f85c3226ebabe563823eedf13aa7219d3e
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
     
+<<<<<<< HEAD
 LOAD DATA INFILE '/Users/xinyuwang/Data/EventProducts.csv' INTO TABLE EventProducts
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
@@ -311,3 +336,24 @@ LOAD DATA INFILE '/Users/xinyuwang/Data/Comments.csv' INTO TABLE Comments
     (CommentID, Content, UserName, EventID);
 
 
+=======
+    LOAD DATA INFILE '/tmp/Data/EventProducts.csv' INTO TABLE EventProducts
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+    LOAD DATA INFILE '/tmp/Data/Reviews.csv' INTO TABLE Reviews
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;    
+    
+LOAD DATA INFILE '/tmp/Data/Reservations.csv' INTO TABLE Reservations
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+LOAD DATA INFILE '/tmp/Data/Comments.csv' INTO TABLE Comments
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+>>>>>>> 66d8b1f85c3226ebabe563823eedf13aa7219d3e
