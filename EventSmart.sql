@@ -176,7 +176,7 @@ CREATE TABLE DIYEvents (
 
 CREATE TABLE Reservations (
 	ReservationID INT AUTO_INCREMENT,
-    CreateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CreatTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     EventDate TIMESTAMP,
 	UserName VARCHAR(255),
     PlannerName VARCHAR(255),
@@ -193,7 +193,7 @@ CREATE TABLE Reservations (
 
 CREATE TABLE Reviews (
 	ReviewID INT AUTO_INCREMENT,
-    CreateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CreatTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Rating FLOAT (2, 1),
     Content TEXT,
     UserName VARCHAR(255),
@@ -227,47 +227,82 @@ CREATE TABLE Comments (
 );
 
 #load values for tables
-LOAD DATA INFILE '/Users/xinyuwang/Data/Restaurants.csv' INTO TABLE Restaurants
+LOAD DATA INFILE '/tmp/Data/Restaurants.csv' INTO TABLE Restaurants
 	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
 
-LOAD DATA INFILE '/Users/xinyuwang/Data/Wines.csv' INTO TABLE Wines
+LOAD DATA INFILE '/tmp/Data/Wines.csv' INTO TABLE Wines
 	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
     
-LOAD DATA INFILE '/Users/xinyuwang/Data/Movies.csv' INTO TABLE Movies
+LOAD DATA INFILE '/tmp/Data/Movies.csv' INTO TABLE Movies
 	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
 
-LOAD DATA INFILE '/Users/xinyuwang/Data/Musics.csv' INTO TABLE Musics
+LOAD DATA INFILE '/tmp/Data/Musics.csv' INTO TABLE Musics
 	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
 
-LOAD DATA INFILE '/Users/xinyuwang/Data/Gifts.csv' INTO TABLE Gifts
+LOAD DATA INFILE '/tmp/Data/Gifts.csv' INTO TABLE Gifts
 	FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
 
-LOAD DATA INFILE '/Users/xinyuwang/Data/ElementLists.csv' INTO TABLE ElementLists
+LOAD DATA INFILE '/tmp/Data/ElementLists.csv' INTO TABLE ElementLists
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+
+LOAD DATA INFILE '/tmp/Data/Persons.csv' INTO TABLE Persons
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
     
-LOAD DATA INFILE '/Users/xinyuwang/Data/Reviews.csv' INTO TABLE Reviews
+    LOAD DATA INFILE '/tmp/Data/Administrators.csv' INTO TABLE Administrators
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+    LOAD DATA INFILE '/tmp/Data/Users.csv' INTO TABLE Users
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+    LOAD DATA INFILE '/tmp/Data/DIYers.csv' INTO TABLE DIYers
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+    LOAD DATA INFILE '/tmp/Data/Planners.csv' INTO TABLE Planners
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+    LOAD DATA INFILE '/tmp/Data/DIYEvents.csv' INTO TABLE DIYEvents
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+    LOAD DATA INFILE '/tmp/Data/EventProducts.csv' INTO TABLE EventProducts
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+    LOAD DATA INFILE '/tmp/Data/Reviews.csv' INTO TABLE Reviews
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;    
     
-LOAD DATA INFILE '/Users/xinyuwang/Data/Reservations.csv' INTO TABLE Reservations
+LOAD DATA INFILE '/tmp/Data/Reservations.csv' INTO TABLE Reservations
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
     
-LOAD DATA INFILE '/Users/xinyuwang/Data/Comments.csv' INTO TABLE Comments
+LOAD DATA INFILE '/tmp/Data/Comments.csv' INTO TABLE Comments
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
