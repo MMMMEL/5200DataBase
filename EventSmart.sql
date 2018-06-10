@@ -176,7 +176,7 @@ CREATE TABLE DIYEvents (
 
 CREATE TABLE Reservations (
 	ReservationID INT AUTO_INCREMENT,
-    CreatTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CreateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     EventDate TIMESTAMP,
 	UserName VARCHAR(255),
     PlannerName VARCHAR(255),
@@ -193,7 +193,7 @@ CREATE TABLE Reservations (
 
 CREATE TABLE Reviews (
 	ReviewID INT AUTO_INCREMENT,
-    CreatTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CreateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Rating FLOAT (2, 1),
     Content TEXT,
     UserName VARCHAR(255),
@@ -253,6 +253,21 @@ LOAD DATA INFILE '/Users/xinyuwang/Data/Gifts.csv' INTO TABLE Gifts
     IGNORE 1 LINES;
 
 LOAD DATA INFILE '/Users/xinyuwang/Data/ElementLists.csv' INTO TABLE ElementLists
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+LOAD DATA INFILE '/Users/xinyuwang/Data/Reviews.csv' INTO TABLE Reviews
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;    
+    
+LOAD DATA INFILE '/Users/xinyuwang/Data/Reservations.csv' INTO TABLE Reservations
+	FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES;
+    
+LOAD DATA INFILE '/Users/xinyuwang/Data/Comments.csv' INTO TABLE Comments
 	FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     IGNORE 1 LINES;
