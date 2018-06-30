@@ -2,7 +2,7 @@
 #PM3
 USE EventSmart;
 
-#1. What are five most popular element in each category?
+#1. What are three most popular element in each category?
 SELECT *
 FROM (
 	SELECT "Music" AS Category_Type, ElementLists.MusicID AS ElementID, COUNT(*) AS CNT
@@ -64,16 +64,14 @@ GROUP BY EventProducts.PlannerName
 ORDER BY AVG_REVIEW DESC
 LIMIT 1;
 
-#3. Which 3 planners have the most reservation in May, 2018?
-/*
-SELECT Reservations.PlannerName, COUNT(*) AS CNT
-FROM M201805
-LEFT OUTER JOIN
-(SELECT Reservations.PlannerName AS Planner, Date(EventDate)
-FROM Reservations) AS RESERVS
-ON M201805.day = DATE (Reservations.EventDate)
-GROUP BY Reservations.PlannerName;
-*/
+
+#3. TOP 3 planners have the most reservation in May, 2018?
+SELECT PlannerName, COUNT(*) AS MAY_RESERVATION_CNT
+FROM Reservations
+WHERE EventDate BETWEEN '2018-05-01 00:00:00' AND '2018-06-01 00:00:00'
+GROUP BY PlannerName
+ORDER BY MAY_RESERVATION_CNT DESC
+LIMIT 3;
 
 #4. Which 3 planner’s event products are the most expensive averagely?
 SELECT EventProducts.PlannerName AS Planner,
@@ -115,3 +113,43 @@ ORDER BY CNT DESC
 LIMIT 1
 ) AS POP_RESTAURANT
 ON Restaurants.RestaurantID = POP_RESTAURANT.RESTAURANT_ID;
+
+#8. Percent of DIYers who actually created DIY events
+SELECT
+100.0 * (SELECT COUNT(DISTINCT UserName) FROM DIYEvents) / 
+(SELECT COUNT(1) FROM DIYers);
+
+#9. Flag  administrators who active participate (logged in within 1 week) in system management
+SELECT UserName AS AdminName,
+CASE
+	WHEN DATEDIFF(NOW(), LastLogin) <= 7
+	THEN 'ACTIVE'
+	ELSE 'INACTIVE'
+END AS Flag
+FROM Administrators
+ORDER BY AdminName;
+
+#10. Assuming each DIYer do reviews their planners on their products when DIYers commit such plan, rank Planners by their gross income
+SELECT ep.PlannerName AS Planner,
+SUM(
+	CASE
+		WHEN ep.PriceRange = '$' THEN 1
+	    WHEN ep.PriceRange = '$$' THEN 2
+	    WHEN ep.PriceRange = '$$$' THEN 3
+	    WHEN ep.PriceRange = '$$$$' THEN 4
+	END
+) AS GrossIncome
+FROM Reviews re
+INNER JOIN EventProducts ep
+ON re.ProductID = ep.ProductID
+GROUP BY ep.PlannerName
+ORDER BY GrossIncome DESC;
+
+#11 List top 10 of most used wines with price less than 100 dollars?
+SELECT ElementLists.WineID, COUNT(*) AS CNT, Wines.Price
+FROM ElementLists INNER JOIN Wines
+ON ElementLists.WineID = Wines.WineID 
+WHERE Wines.Price < 100
+GROUP BY ElementLists.WineID
+ORDER BY CNT  DESC
+LIMIT 10;
