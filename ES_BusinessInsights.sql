@@ -87,16 +87,13 @@ GROUP BY EventProducts.PlannerName
 ORDER BY AVG_PriceRange DESC
 LIMIT 3;
 
-#5. 
-
-
-#6. What event theme is most used?
+#5. What event theme is most used?
 SELECT DIYEvents.Theme, COUNT(*) AS CNT
 FROM DIYEvents
 GROUP BY  Theme
 ORDER BY CNT DESC;
 
-#7. What is the restaurant most used by business events?
+#6. What is the restaurant most used by business events?
 SELECT Restaurants.RestaurantID, Restaurants.RestaurantName
 FROM Restaurants INNER JOIN
 (
@@ -114,12 +111,12 @@ LIMIT 1
 ) AS POP_RESTAURANT
 ON Restaurants.RestaurantID = POP_RESTAURANT.RESTAURANT_ID;
 
-#8. Percent of DIYers who actually created DIY events
+#7. Percent of DIYers who actually created DIY events
 SELECT
 100.0 * (SELECT COUNT(DISTINCT UserName) FROM DIYEvents) / 
-(SELECT COUNT(1) FROM DIYers);
+(SELECT COUNT(1) FROM DIYers) AS DIY_Percent;
 
-#9. Flag  administrators who active participate (logged in within 1 week) in system management
+#8. Flag  administrators who active participate (logged in within 1 week) in system management
 SELECT UserName AS AdminName,
 CASE
 	WHEN DATEDIFF(NOW(), LastLogin) <= 7
@@ -129,7 +126,7 @@ END AS Flag
 FROM Administrators
 ORDER BY AdminName;
 
-#10. Assuming each DIYer do reviews their planners on their products when DIYers commit such plan, rank Planners by their gross income
+#9. Assuming each DIYer do reviews their planners on their products when DIYers commit such plan, rank Planners by their gross income
 SELECT ep.PlannerName AS Planner,
 SUM(
 	CASE
@@ -145,7 +142,7 @@ ON re.ProductID = ep.ProductID
 GROUP BY ep.PlannerName
 ORDER BY GrossIncome DESC;
 
-#11 List top 10 of most used wines with price less than 100 dollars?
+#10. List top 10 of most used wines with price less than 100 dollars?
 SELECT ElementLists.WineID, COUNT(*) AS CNT, Wines.Price
 FROM ElementLists INNER JOIN Wines
 ON ElementLists.WineID = Wines.WineID 
