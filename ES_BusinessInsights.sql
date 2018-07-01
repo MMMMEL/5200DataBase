@@ -124,7 +124,7 @@ CASE
 	ELSE 'INACTIVE'
 END AS Flag
 FROM Administrators
-ORDER BY AdminName;
+ORDER BY Flag, AdminName;
 
 #9. Assuming each DIYer do reviews their planners on their products when DIYers commit such plan, rank Planners by their gross income
 SELECT ep.PlannerName AS Planner,
