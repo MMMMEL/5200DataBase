@@ -5,11 +5,11 @@ USE EventSmart;
 #1. What are three most popular element in each category?
 SELECT *
 FROM (
-	SELECT "Music" AS Category_Type, ElementLists.MusicID AS ElementID, COUNT(*) AS CNT
-	FROM ElementLists
-	GROUP BY ElementLists.MusicID
-	ORDER BY CNT DESC
-	LIMIT 3
+SELECT "Music" AS Category_Type, ElementLists.MusicID AS ElementID, COUNT(*) AS CNT
+FROM ElementLists
+GROUP BY ElementLists.MusicID
+ORDER BY CNT DESC
+LIMIT 3
 ) AS MUSIC
 
 UNION ALL
@@ -116,7 +116,7 @@ SELECT
 100.0 * (SELECT COUNT(DISTINCT UserName) FROM DIYEvents) / 
 (SELECT COUNT(1) FROM DIYers) AS DIY_Percent;
 
-#8. Flag  administrators who active participate (logged in within 1 week) in system management
+#8. Flag administrators who active participate (logged in within 1 week) in system management
 SELECT UserName AS AdminName,
 CASE
 	WHEN DATEDIFF(NOW(), LastLogin) <= 7
@@ -148,5 +148,5 @@ FROM ElementLists INNER JOIN Wines
 ON ElementLists.WineID = Wines.WineID 
 WHERE Wines.Price < 100
 GROUP BY ElementLists.WineID
-ORDER BY CNT  DESC
+ORDER BY CNT DESC
 LIMIT 10;
