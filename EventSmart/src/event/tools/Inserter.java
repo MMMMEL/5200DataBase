@@ -81,11 +81,11 @@ public class Inserter {
 				planner1.getUserName(), planner1.getCompany());
 		
 		
-		//DELETE
-		administratorsDao.delete(admin3);
-		diyersDao.delete(diyer3);
-		plannersDao.delete(planner3);
-		
+//		//DELETE
+//		administratorsDao.delete(admin3);
+//		diyersDao.delete(diyer3);
+//		plannersDao.delete(planner3);
+//		
 	}
 
 }

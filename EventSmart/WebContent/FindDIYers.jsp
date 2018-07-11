@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Find a DIYer</title>
 </head>
 <body>
 	<form action="finddiyers" method="post">
@@ -31,10 +31,16 @@
 				<th>UserName</th>
                 <th>FirstName</th>
                 <th>LastName</th>
-                <th>Email</th>
                 <th>DIYEvents</th>
 			</tr>
+			<c:forEach items="${diyers}" var="diyer">
+				<tr>
+					 <td><c:out value="${diyer.getUserName()}" /></td>
+					 <td><c:out value="${diyer.getFirstName()}" /></td>
+					 <td><c:out value="${diyer.getLastName()}" /></td>
+					 <td><a href="diyevents?username=<c:out value="${diyer.getUserName()}" />"></a></td>
+				</tr>
+			</c:forEach>
 		</table>
-
 </body>
 </html>
