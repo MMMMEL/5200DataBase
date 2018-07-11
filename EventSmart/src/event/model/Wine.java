@@ -5,10 +5,10 @@ public class Wine {
 	protected int wineID;
 	protected String name = " ";
 	protected String country;
-	protected float price;
+	protected int price;
 	protected String description;
 	
-	public Wine(int wineID, String name, String country, float price, String description) {
+	public Wine(int wineID, String name, String country,  String description, int price) {
 		this.wineID = wineID;
 		this.name = name;
 		this.country = country;
@@ -44,11 +44,11 @@ public class Wine {
 		this.country = country;
 	}
 
-	public float getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
