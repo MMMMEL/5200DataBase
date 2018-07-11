@@ -5,9 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import event.model.*;
 
 
@@ -91,11 +88,11 @@ public class ElementListsDao {
 			selectStmt = connection.prepareStatement(selectelementList);
 			selectStmt.setInt(1, elementListId);
 			results = selectStmt.executeQuery();
-			MusicDao musicDao = musicDao.getInstance();
-			MovieDao movieDao = movieDao.getInstance();
-			WineDao wineDao = wineDao.getInstance();
-			RestaurantDao restaurantDao = restaurantDao.getInstance();
-			GiftDao giftDao = giftDao.getInstance();
+			MusicDao musicDao = MusicDao.getInstance();
+			MovieDao movieDao = MovieDao.getInstance();
+			WineDao wineDao = WineDao.getInstance();
+			RestaurantDao restaurantDao = RestaurantDao.getInstance();
+			GiftDao giftDao = GiftDao.getInstance();
 			if(results.next()) {
 				int resultListID = results.getInt("ListId");
 				int resultMusicID = results.getInt("MusicID");
