@@ -61,7 +61,7 @@ public class UpdatePhone extends HttpServlet{
 			try {
 				Users user = usersDao.getUserFromUserName(userName);
 				if (user == null) {
-					messages.put("Success", "UserName does not exist. No update to perform.");
+					messages.put("success", "UserName does not exist. No update to perform.");
 				} else {
 					String newPhone = req.getParameter("phone");
 					if (newPhone == null || newPhone.trim().isEmpty() || newPhone.length() != 10) {

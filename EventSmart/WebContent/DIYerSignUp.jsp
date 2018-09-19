@@ -8,44 +8,91 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="signin.css" rel="stylesheet">
+<link href="navbar-top.css" rel="stylesheet">
+
 <title>User Sign Up</title>
 </head>
-<body>
-	<h1>DIYer Sign Up</h1>
-	<form action="diyersignup" method="post">
+<body style="background-image: url(https://images.unsplash.com/photo-1415025148099-17fe74102b28?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1d2697309ae275b27d03270feb9d73e6&auto=format&fit=crop&w=2736&q=80)">
+	<nav class="navbar navbar-expand-md">
+      <a class="navbar-brand" style="color: #e6f7ff; font-size: 200%">EventSmart</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="diyersignup" style="color: #e6f7ff">SignUp <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="diyersignin" style="color: #e6f7ff">SignIn</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="plannersignup" style="color: #e6f7ff">Planner</a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0" action="finddiyers" method="post">
+          <input id="firstname" name="firstname" class="form-control mr-sm-2" type="text" placeholder="Search a Friend" aria-label="Search" value="${fn:escapeXml(param.firstname)}">
+          <button
+          	class="btn btn-outline-light my-2 my-sm-0" 
+          	style="color: #e6f7ff" 
+          	type="submit">
+          	Search
+          	</button>
+        </form>
+      </div>
+    </nav>
+	<div style="margin-top: 100px" class="container theme-showcase" role="main">
+	<form action="diyersignup" method="post" class="form-signin">
+	
+	<h1 class="h3 mb-3 font-weight-normal" style="color: #e6f7ff">New User Sign Up</h1>
+	
 		<p>
-			<label for="username">UserName</label>
-			<input id="username" name="username" value="">
+			<label for="username" class="sr-only">UserName</label>
+			<input id="username" name="username" value="" style="width: 400px" class="form-control" placeholder="UserName" required autofocus>
 		</p>
 		<p>
-			<label for="password">Password</label>
-			<input id="password" name="password" value="">
+			<label for="password" class="sr-only">Password</label>
+			<input id="password" name="password" value="" style="width: 400px" class="form-control" placeholder="Password" type="password" required>
 		</p>
 		<p>
-			<label for="email">Email</label>
-			<input id="email" name="email" value="">
+			<label for="email" class="sr-only">Email</label>
+			<input id="email" name="email" value="" style="width: 400px" class="form-control" placeholder="Email" type="email" required>
 		</p>
 		<p>
-			<label for="firstname">FirstName</label>
-			<input id="firstname" name="firstname" value="">
+			<label for="firstname" class="sr-only">FirstName</label>
+			<input id="firstname" name="firstname" value="" style="width: 400px" class="form-control" placeholder="FirstName" required>
 		</p>
 		<p>
-			<label for="lastname">LastName</label>
-			<input id="lastname" name="lastname" value="">
+			<label for="lastname" class="sr-only">LastName</label>
+			<input id="lastname" name="lastname" value="" style="width: 400px" class="form-control" placeholder="LastName" required>
 		</p>
 		<p>
-			<label for="phone">Phone</label>
-			<input id="phone" name="phone" value="">
+			<label for="phone" class="sr-only">Phone</label>
+			<input id="phone" name="phone" value="" style="width: 400px" class="form-control" placeholder="Phone" required>
 		</p>
 		<p>
-			<input type="submit">
+			<button
+          	class="btn btn-outline-light my-2 my-sm-0" 
+          	style="color: #e6f7ff" 
+          	type="submit">
+          	Sign Up
+          	</button>
 		</p>
+
 	</form>
 	<p>
-		<span id="successMessage"><b>${messages.success}</b></span>
+		<span id="successMessage" style="color: #e6f7ff"><b>${messages.success}</b></span>
 	</p>
-	<div id="plannerSignUp"><a href="plannersignup">Sign Up as Planner</a></div>
-	<div id="findDIYers"><a href="finddiyers">Find a DIYer</a></div>
-	<div id="findPlanners"><a href="findplanners">Find a Planner</a></div>
+	</div>
+	
+	<!-- Bootstrap -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	
 </body>
 </html>

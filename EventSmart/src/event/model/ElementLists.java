@@ -17,6 +17,14 @@ public class ElementLists {
 		this.giftID = GiftID;	
 	}
 	
+	public ElementLists (int MusicID, int MovieID, int WineID, int RestaurantID, int GiftID) {
+		this.musicID = MusicID;
+		this.movieID = MovieID;
+		this.wineID = WineID;
+		this.restaurantID = RestaurantID;
+		this.giftID = GiftID;	
+	}
+	
 	public ElementLists (int ListID) {
 		this.listID = ListID;
 		

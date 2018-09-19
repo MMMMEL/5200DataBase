@@ -8,26 +8,85 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="signin.css" rel="stylesheet">
+
 <title>Update a User</title>
 </head>
-<body>
-	<h1>Update Phone</h1>
-	<form action="updatephone" method="post">
+<body style="background-image: url(https://images.unsplash.com/photo-1415025148099-17fe74102b28?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1d2697309ae275b27d03270feb9d73e6&auto=format&fit=crop&w=2736&q=80)">
+	<nav class="navbar navbar-expand-md">
+      <a class="navbar-brand" style="color: #e6f7ff; font-size: 200%">EventSmart</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="diyersignup" style="color: #e6f7ff">SignUp <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="diyersignin" style="color: #e6f7ff">SignIn</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="plannersignup" style="color: #e6f7ff">Planner</a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0" action="finddiyers" method="post">
+          <input id="firstname" name="firstname" class="form-control mr-sm-2" type="text" placeholder="Search a Friend" aria-label="Search" value="${fn:escapeXml(param.firstname)}">
+          <button
+          	class="btn btn-outline-light my-2 my-sm-0" 
+          	style="color: #e6f7ff" 
+          	type="submit">
+          	Search
+          	</button>
+        </form>
+      </div>
+    </nav>
+	<div style="margin-top: 100px"class="container theme-showcase" role="main">
+	<h1 class="h3 mb-3 font-weight-normal" style="color: #e6f7ff">Update Your Phone Number</h1>
+	<form action="updatephone" method="post" class="form-signin">
 		<p>
-			<label for="username">UserName</label>
-			<input id="username" name="username" value="${fn:escapeXml(param.username)}">
+			<label for="username" class="sr-only">UserName</label>
+			<input id="username" name="username" value="${fn:escapeXml(param.username)}" style="width: 400px" class="form-control" placeholder="UserName" required autofocus>
 		</p>
 		<p>
-			<label for="phone">New PhoneNumber</label>
-			<input id="phone" name="phone" value="">
+			<label for="phone" class="sr-only">New PhoneNumber</label>
+			<input id="phone" name="phone" value="" style="width: 400px" class="form-control" placeholder="Phone Number">
 		</p>
 		<p>
-			<input type="submit">
+			<button
+          	class="btn btn-outline-light my-2 my-sm-0" 
+          	style="color: #e6f7ff" 
+          	type="submit">
+          	Update
+          	</button>
 		</p>
+		<br/>
+		<div>
+		<h1 class="h3 mb-3 font-weight-normal" style="color: #e6f7ff">Edit Profile</h1>
+			<table class="table table-striped table-sm">
+				<tr>
+					<th style="color: #e6f7ff">UserName</th>
+					<th style="color: #e6f7ff">Update Phone</th>
+					<th style="color: #e6f7ff">My Events</th>
+					<th style="color: #e6f7ff">My Reservations</th>
+				</tr>
+				<tr>
+					<td style="color: #e6f7ff"><c:out value="${fn:escapeXml(param.username)}" /></td>
+					<td style="color: #e6f7ff"><a href="updatephone?username=<c:out value="${fn:escapeXml(param.username)}" />">Update</a></td>
+					<td style="color: #e6f7ff"><a href="findevents?username=<c:out value="${fn:escapeXml(param.username)}" />">My Events</a></td>
+					<td style="color: #e6f7ff"><a href="diyerreservation?diyername=<c:out value="${fn:escapeXml(param.username)}" />">My Reservations</a></td>
+				</tr>
+			</table>
+			<div id="createEvent"><a class="btn btn-sm btn-outline-secondary" href="createevent?username=<c:out value="${fn:escapeXml(param.username)}" />" style="color: #e6f7ff">Create an Event</a></div>
+			<br>
+			<div id="cancelAccount"><a class="btn btn-sm btn-outline-secondary" href="diyerdelete?username=<c:out value="${fn:escapeXml(param.username)}" />" style="color: #e6f7ff">Cancel Account</a></div>
+		</div>
 	</form>
 	<br/><br/>
 	<p>
-		<span id="successMessage"><b>${messages.success}</b></span>
+		<span id="successMessage" style="color: #e6f7ff"><b>${messages.success}</b></span>
 	</p>
 </body>
 </html>

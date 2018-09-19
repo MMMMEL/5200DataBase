@@ -51,6 +51,9 @@ public class DIYersDao extends UsersDao{
 	
 	public DIYers getDIYerFromDIYerName (String userName) throws SQLException {
 		Users user = getUserFromUserName (userName);
+		if (user == null) {
+			return null;
+		}
 		DIYers diyer = new DIYers(user.getUserName(), user.getPassWord(), user.getEmail(), 
 				user.getFirstName(), user.getLastName(), user.getPhone());
 		return diyer;

@@ -56,7 +56,7 @@ public class PlannersDao extends UsersDao{
 		Users user = getUserFromUserName (plannerName);
 		
 		String selectPlanner = 
-				"SELECT Planners.PlannerName AS PlannerName, Company "
+				"SELECT Planners.PlannerName AS PlannerName, Company, Liked "
 				+ "FROM Planners WHERE Planners.PlannerName=?;";
 		Connection connection = null;
 		PreparedStatement selectStmt = null;
@@ -69,8 +69,9 @@ public class PlannersDao extends UsersDao{
 			if (results.next()) {
 				String resultPlannerName = results.getString("PlannerName");
 				String company = results.getString("Company");
+				int liked = results.getInt("Liked");
 				Planners planner = new Planners (resultPlannerName, user.getPassWord(), user.getEmail(), 
-						user.getFirstName(), user.getLastName(), user.getPhone(), company);
+						user.getFirstName(), user.getLastName(), user.getPhone(), company, liked);
 				return planner;
 			}
 		} catch (SQLException e) {
@@ -93,11 +94,12 @@ public class PlannersDao extends UsersDao{
 	public List<Planners> getPlannerFromCompanyName (String company) throws SQLException {
 		List<Planners> planners = new ArrayList<Planners>();
 		String selectPlanners = 
-				"SELECT Planners.PlannerName AS PlannerName, Password, Email, FirstName, LastName, Phone, Company "
+				"SELECT Planners.PlannerName AS PlannerName, Password, Email, FirstName, LastName, Phone, Company, Liked "
 				+ "FROM Planners "
 				+ "INNER JOIN Users ON Planners.PlannerName = Users.UserName "
 				+ "INNER JOIN Persons ON Users.UserName = Persons.UserName "
-				+ "WHERE Planners.Company=?;";
+				+ "WHERE Planners.Company=? "
+				+ "ORDER BY Liked DESC;";
 		Connection connection = null;
 		PreparedStatement selectStmt = null;
 		ResultSet results = null;
@@ -114,8 +116,9 @@ public class PlannersDao extends UsersDao{
 				String lastName = results.getString("LastName");
 				String phone = results.getString("Phone");
 				String resultCompany = results.getString("Company");
+				int liked = results.getInt("Liked");
 				Planners planner = new Planners(plannerName, password, email, firstName, lastName, 
-						phone, resultCompany);
+						phone, resultCompany, liked);
 				planners.add(planner);
 			}
 		} catch (SQLException e) {
@@ -152,6 +155,32 @@ public class PlannersDao extends UsersDao{
 			updateStmt.executeUpdate();
 			
 			planner.setCompany(newCompany);
+			return planner;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if(connection != null) {
+				connection.close();
+			}
+			if(updateStmt != null) {
+				updateStmt.close();
+			}
+		}
+	}
+	
+	public Planners votePlanner (Planners planner) throws SQLException {
+		String updatePlanner = "UPDATE Planners SET Liked=? WHERE PlannerName=?;";
+		Connection connection = null;
+		PreparedStatement updateStmt = null;
+		try {
+			connection = connectionManager.getConnection();
+			updateStmt = connection.prepareStatement(updatePlanner);
+			updateStmt.setInt(1, planner.getLiked() + 1);
+			updateStmt.setString(2, planner.getUserName());
+			updateStmt.executeUpdate();
+			
+			planner.setLiked(planner.getLiked() + 1);
 			return planner;
 		} catch (SQLException e) {
 			e.printStackTrace();
